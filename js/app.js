@@ -57,4 +57,8 @@ function makeSets() {
   }
 }
 makeSets();
-console.log(allSets);
+
+//iterate through allSets, each indexOf
+     // display current set on the percentage
+      
+     // on click - record the image that was clicked
