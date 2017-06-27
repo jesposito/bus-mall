@@ -74,8 +74,8 @@ function makeSets() {
 makeSets();
 displaySet();
 
-function clearImages() {
-  var imgClass = document.getElementsByClassName('photo-grid-item');
+function clearImages(className) {
+  var imgClass = document.getElementsByClassName(className);
   while(imgClass[0]) {
     imgClass[0].parentNode.removeChild(imgClass[0]);
   }
@@ -110,7 +110,7 @@ function imgClicked(event) {
   var elImg = event.target;
   var imgID = elImg.id;
   addClicks(imgID);
-  clearImages();
+  clearImages('photo-grid-item');
   if (totalClicks < 25) {
     displaySet();
   } else {

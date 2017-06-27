@@ -27,11 +27,13 @@ html {
 #logo {
   font-family: 'Permanent Marker', cursive;
   font-size: 2rem;
+  padding-right: 1rem;
 }
 
 #title {
   font-family: 'Lato', sans-serif;
   font-size: 1.5rem;
+  padding-right: 1rem;
 }
 
 #date {
