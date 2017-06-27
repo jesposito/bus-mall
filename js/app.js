@@ -6,6 +6,18 @@ var allSets = [];
 var images = [];
 var totalClicks = 0;
 
+function getDate() {
+  var n = new Date();
+  var y = n.getFullYear();
+  var m = n.getMonth() + 1;
+  var d = n.getDate();
+  var newDate = document.createTextNode(m + '/' + d + '/' + y);
+  var dateField = document.getElementById('date');
+  dateField.appendChild(newDate);
+}
+
+getDate();
+
 function Image(id,name,path) {
   images.push(this);
   this.name = name;
@@ -13,6 +25,7 @@ function Image(id,name,path) {
   this.id = id;
   this.shown = 0;
   this.clicked = 0;
+  this.percentSelected = 0;
 }
 
 var bag = new Image('bag','Bag','img/bag.jpg');
@@ -61,8 +74,8 @@ function makeSets() {
 makeSets();
 displaySet();
 
-function clearImages() {
-  var imgClass = document.getElementsByClassName('photo-grid-item');
+function clearImages(className) {
+  var imgClass = document.getElementsByClassName(className);
   while(imgClass[0]) {
     imgClass[0].parentNode.removeChild(imgClass[0]);
   }
@@ -97,9 +110,13 @@ function imgClicked(event) {
   var elImg = event.target;
   var imgID = elImg.id;
   addClicks(imgID);
-  clearImages();
+  clearImages('photo-grid-item');
   if (totalClicks < 25) {
     displaySet();
+  } else {
+    calcShown();
+    drawTable();
+    drawChart();
   }
 }
 
@@ -113,4 +130,42 @@ function addClicks(id) {
       break;
     }
   }
+}
+
+function calcShown() {
+  for (var i = 0; i < images.length; i++){
+    var currentObj = images[i];
+    currentObj.percentSelected = Math.floor((currentObj.clicked / currentObj.shown) * 100);
+  }
+}
+
+function drawTable() {
+  var dataTable = document.getElementById('table');
+  var tableHeader = document.createElement('thead');
+  var headerRow = document.createElement('tr');
+  var tableBody = document.createElement('tbody');
+  var headers = ['Item Name','Times Shown','Times Clicked','% Selected'];
+  for(var h = 0; h < headers.length;h++) {
+    var headerCell = document.createElement('th');
+    headerCell.textContent = headers[h];
+    headerRow.appendChild(headerCell);
+  }
+  tableHeader.appendChild(headerRow);
+  dataTable.appendChild(tableHeader);
+  for(var i = 0; i < images.length; i++) {
+    var currentObj = images[i];
+    var newRow = document.createElement('tr');
+    var cellData = [currentObj.name,currentObj.shown,currentObj.clicked,currentObj.percentSelected + '%'];
+    for(var r = 0; r < cellData.length; r++) {
+      var newCell = document.createElement('td');
+      newCell.textContent = cellData[r];
+      newRow.appendChild(newCell);
+    }
+    tableBody.appendChild(newRow);
+  }
+  dataTable.append(tableBody);
+}
+
+function drawChart() {
+
 }
