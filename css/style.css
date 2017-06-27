@@ -104,19 +104,22 @@ html {
   align-self: center;
 }
 
-
-.first-item {
-  order: 1;
+.chart-container {
+  display: flex;
+  justify-content: center;
 }
 
-.last-item {
-  order: -1;
+#vote-chart {
+
 }
 
-.social,
-.subscribe {
-  align-self: flex-end;
-  margin-bottom: 20px;
+.table-container {
+  display: flex;
+  justify-content: center;
+}
+
+#table {
+  margin-bottom: 50px;
 }
 
 .footer {

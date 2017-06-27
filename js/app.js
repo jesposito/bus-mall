@@ -25,7 +25,7 @@ function Image(id,name,path) {
   this.id = id;
   this.shown = 0;
   this.clicked = 0;
-  this.percentShown = 0;
+  this.percentSelected = 0;
 }
 
 var bag = new Image('bag','Bag','img/bag.jpg');
@@ -115,9 +115,8 @@ function imgClicked(event) {
     displaySet();
   } else {
     calcShown();
-    console.log(images[0].percentShown);
-    console.log(images[1].percentShown);
-    console.log(images[2].percentShown);
+    drawTable();
+    drawChart();
   }
 }
 
@@ -136,6 +135,37 @@ function addClicks(id) {
 function calcShown() {
   for (var i = 0; i < images.length; i++){
     var currentObj = images[i];
-    currentObj.percentShown = (currentObj.clicked / currentObj.shown) * 100;
+    currentObj.percentSelected = Math.floor((currentObj.clicked / currentObj.shown) * 100);
   }
+}
+
+function drawTable() {
+  var dataTable = document.getElementById('table');
+  var tableHeader = document.createElement('thead');
+  var headerRow = document.createElement('tr');
+  var tableBody = document.createElement('tbody');
+  var headers = ['Item Name','Times Shown','Times Clicked','% Selected'];
+  for(var h = 0; h < headers.length;h++) {
+    var headerCell = document.createElement('th');
+    headerCell.textContent = headers[h];
+    headerRow.appendChild(headerCell);
+  }
+  tableHeader.appendChild(headerRow);
+  dataTable.appendChild(tableHeader);
+  for(var i = 0; i < images.length; i++) {
+    var currentObj = images[i];
+    var newRow = document.createElement('tr');
+    var cellData = [currentObj.name,currentObj.shown,currentObj.clicked,currentObj.percentSelected + '%'];
+    for(var r = 0; r < cellData.length; r++) {
+      var newCell = document.createElement('td');
+      newCell.textContent = cellData[r];
+      newRow.appendChild(newCell);
+    }
+    tableBody.appendChild(newRow);
+  }
+  dataTable.append(tableBody);
+}
+
+function drawChart() {
+
 }
