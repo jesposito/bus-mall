@@ -25,6 +25,7 @@ function Image(id,name,path) {
   this.id = id;
   this.shown = 0;
   this.clicked = 0;
+  this.percentShown = 0;
 }
 
 var bag = new Image('bag','Bag','img/bag.jpg');
@@ -112,6 +113,11 @@ function imgClicked(event) {
   clearImages();
   if (totalClicks < 25) {
     displaySet();
+  } else {
+    calcShown();
+    console.log(images[0].percentShown);
+    console.log(images[1].percentShown);
+    console.log(images[2].percentShown);
   }
 }
 
@@ -124,5 +130,12 @@ function addClicks(id) {
       images[i].clicked ++;
       break;
     }
+  }
+}
+
+function calcShown() {
+  for (var i = 0; i < images.length; i++){
+    var currentObj = images[i];
+    currentObj.percentShown = (currentObj.clicked / currentObj.shown) * 100;
   }
 }
