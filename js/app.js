@@ -6,6 +6,18 @@ var allSets = [];
 var images = [];
 var totalClicks = 0;
 
+function getDate() {
+  var n = new Date();
+  var y = n.getFullYear();
+  var m = n.getMonth() + 1;
+  var d = n.getDate();
+  var newDate = document.createTextNode(m + '/' + d + '/' + y);
+  var dateField = document.getElementById('date');
+  dateField.appendChild(newDate);
+}
+
+getDate();
+
 function Image(id,name,path) {
   images.push(this);
   this.name = name;
