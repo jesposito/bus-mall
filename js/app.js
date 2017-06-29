@@ -4,6 +4,9 @@
 
 var allSets = [];
 var images = [];
+var clickTotals = [];
+var displayTotals = [];
+var labels = [];
 var totalClicks = 0;
 
 function getDate() {
@@ -166,6 +169,62 @@ function drawTable() {
   dataTable.append(tableBody);
 }
 
-function drawChart() {
+function chartLabels() {
+  for (var i = 0; i < images.length; i++) {
+    labels[i] = images[i].name;
+  }
+}
 
+function chartClickTotals() {
+  for (var i = 0; i < images.length; i++) {
+    clickTotals[i] = images[i].clicked;
+  }
+}
+
+function chartDisplayTotals() {
+  for (var i = 0; i < images.length; i++) {
+    displayTotals[i] = images[i].shown;
+  }
+}
+
+
+function drawChart() {
+  chartLabels();
+  chartClickTotals();
+  chartDisplayTotals();
+  var canvas = document.getElementById('vote-chart');
+  var rect = canvas.parentNode.getBoundingClientRect();
+  var ctx = canvas.getContext('2d');
+  Chart.defaults.global.defaultFontSize = 16;
+  var voteChart = new Chart(ctx, {
+    responsive: true,
+    type: 'bar',
+    data:
+    {
+      labels: labels,
+      datasets:
+      [
+        {
+          label: 'You chose the item this many times.',
+          data: clickTotals,
+          backgroundColor : '#9b59b6',
+          borderColor : '#8e44ad',
+        },
+        {
+          label: 'We showed the item this many times.',
+          data : displayTotals,
+          backgroundColor : '#34495e',
+          borderColor : '#2c3e50',
+        }
+      ]
+    }
+  });
+  sizeChart();
+}
+
+function sizeChart() {
+  var canvas = document.getElementById('vote-chart');
+  var rect = canvas.parentNode.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = rect.height;
 }

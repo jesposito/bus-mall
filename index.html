@@ -5,8 +5,9 @@
     <title>Bus Mall</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/tablesaw/0.1.4/tablesaw.css">
   </head>
-  <body>
+  <body class="site">
     <div class='menu-container'>
       <div class='menu'>
         <div id="logo">BusMall &#174;</div>
@@ -14,22 +15,30 @@
         <div id='date'></div>
       </div>
     </div>
-    <div class='photo-grid-container'>
-      <div id='photo-grid'></div>
-    </div>
-    <div class='chart-container'>
-
-    </div>
-    <div class='table-container'>
-      <table id='table'></table>
-    </div>
-    <div class='footer'>
-      <div class='footer-item footer-two'>
-        <div id='display-area'></div>
+    <main class="site-content">
+      <div class='photo-grid-container'>
+        <div id='photo-grid'></div>
       </div>
-    </div>
+      <div class='chart-container'>
+        <div id='canvas-container'>
+          <canvas id="vote-chart"></canvas>
+        </div>
+      </div>
+      <div class='table-container'>
+        <table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack" id='table'></table>
+      </div>
+    </main>
+    <footer>
+      <div class='footer'>
+        <div class='footer-item footer-two'>
+          <div id='display-area'></div>
+        </div>
+      </div>
+    </footer>
   </body>
   <script type="text/javascript" src="js/app.js" ></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/tablesaw/0.1.4/tablesaw.js"></script>
 </html>
