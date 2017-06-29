@@ -187,7 +187,6 @@ function chartDisplayTotals() {
   }
 }
 
-
 function drawChart() {
   chartLabels();
   chartClickTotals();
