@@ -107,14 +107,15 @@ html {
 }
 
 .photo-grid-item {
-  border: 1px solid #111111;
-  margin-left: 1.3rem;
-  margin-right: 1.3rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
   margin-bottom: 50px;
   height: 12.5rem;
   align-content: space-between;
   justify-content: center;
   align-self: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
 
 .chart-container {
@@ -171,4 +172,16 @@ footer {
   background-color: #5995DA;
   flex: initial;
   width: 300px;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
 }

@@ -80,10 +80,17 @@ kickItAllOff();
 function kickItAllOff() {
   var imagesTemp = localStorage.stringImages;
   if (imagesTemp) {
-    images = JSON.parse(imagesTemp);
-    console.log('from local storage ' + images);
-    drawTable();
-    drawChart();
+    var checking = prompt('Would you like to reset? Please answer Y or N');
+    checking = checking.toUpperCase();
+    if (checking === 'Y' || checking === 'YES') {
+      makeSets();
+      displaySet();
+    } else {
+      images = JSON.parse(imagesTemp);
+      console.log('from local storage ' + images);
+      drawTable();
+      drawChart();
+    }
   } else {
     makeSets();
     displaySet();
