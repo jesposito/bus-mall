@@ -74,8 +74,22 @@ function makeSets() {
     prevSet = tempSet;
   }
 }
-makeSets();
-displaySet();
+
+kickItAllOff();
+
+function kickItAllOff() {
+  var imagesTemp = localStorage.stringImages;
+  if (imagesTemp) {
+    images = JSON.parse(imagesTemp);
+    console.log('from local storage ' + images);
+    drawTable();
+    drawChart();
+  } else {
+    makeSets();
+    displaySet();
+  }
+}
+console.log('just after ' + images);
 
 function clearImages(className) {
   var imgClass = document.getElementsByClassName(className);
@@ -118,6 +132,7 @@ function imgClicked(event) {
     displaySet();
   } else {
     calcShown();
+    storeEverything();
     drawTable();
     drawChart();
   }
@@ -226,4 +241,8 @@ function sizeChart() {
   var rect = canvas.parentNode.getBoundingClientRect();
   canvas.width = rect.width;
   canvas.height = rect.height;
+}
+
+function storeEverything() {
+  localStorage.stringImages = JSON.stringify(images);
 }
