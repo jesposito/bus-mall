@@ -75,22 +75,54 @@ function makeSets() {
   }
 }
 
+function resetPrompt() {
+  //draw some buttons on the page
+  var buttonContainer = document.getElementById('reset-form');
+  var resetQuestion = document.createElement('h2');
+  resetQuestion.id = 'reset-h2';
+  resetQuestion.textContent = 'Thanks for your help! Do you want to start over?';
+  var yesButton = document.createElement('button');
+  yesButton.setAttribute('type', 'click');
+  yesButton.setAttribute('name','Yes');
+  yesButton.setAttribute('value','Yes');
+  yesButton.innerHTML = '<span>Yes</span>';
+  var noButton = document.createElement('button');
+  noButton.setAttribute('type', 'click');
+  noButton.setAttribute('name','No');
+  noButton.setAttribute('value','No');
+  noButton.innerHTML = '<span>No</span>';
+  yesButton.id = 'yes-button';
+  noButton.id = 'no-button';
+  buttonContainer.appendChild(resetQuestion);
+  buttonContainer.appendChild(yesButton);
+  buttonContainer.appendChild(noButton);
+  buttonContainer.addEventListener('click', handleSubmit);
+}
+
+function handleSubmit(event){
+  event.preventDefault();
+  var val = event.target.value;
+  console.log(val);
+  if (event.target.value === 'Yes') {
+    clearClassChildren('reset-check');
+    makeSets();
+    displaySet();
+  } else {
+    clearClassChildren('reset-check');
+    var imagesTemp = localStorage.stringImages;
+    images = JSON.parse(imagesTemp);
+    console.log('from local storage ' + images);
+    drawTable();
+    drawChart();
+  }
+}
+
 kickItAllOff();
 
 function kickItAllOff() {
   var imagesTemp = localStorage.stringImages;
   if (imagesTemp) {
-    var checking = prompt('Would you like to reset? Please answer Y or N');
-    checking = checking.toUpperCase();
-    if (checking === 'Y' || checking === 'YES') {
-      makeSets();
-      displaySet();
-    } else {
-      images = JSON.parse(imagesTemp);
-      console.log('from local storage ' + images);
-      drawTable();
-      drawChart();
-    }
+    resetPrompt();
   } else {
     makeSets();
     displaySet();
@@ -98,10 +130,10 @@ function kickItAllOff() {
 }
 console.log('just after ' + images);
 
-function clearImages(className) {
-  var imgClass = document.getElementsByClassName(className);
-  while(imgClass[0]) {
-    imgClass[0].parentNode.removeChild(imgClass[0]);
+function clearClassChildren(className) {
+  var elClass = document.getElementsByClassName(className);
+  while(elClass[0]) {
+    elClass[0].parentNode.removeChild(elClass[0]);
   }
 }
 
@@ -134,7 +166,7 @@ function imgClicked(event) {
   var elImg = event.target;
   var imgID = elImg.id;
   addClicks(imgID);
-  clearImages('photo-grid-item');
+  clearClassChildren('photo-grid-item');
   if (totalClicks < 25) {
     displaySet();
   } else {

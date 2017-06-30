@@ -96,6 +96,28 @@ html {
   justify-content: center;
 }
 
+.reset-check {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-top: 8rem;
+}
+
+#reset-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
 #photo-grid {
   width: 80%;
   display: flex;
@@ -186,4 +208,62 @@ footer {
   to {
     transform: scale3d(1, 1, 1);
   }
+}
+
+/* Button */
+button {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  padding: 0;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background-color: #5995da;
+  color: #ecf0f1;
+  transition: background-color .3s;
+}
+
+button:hover, button:focus {
+  background-color: #2980b9;
+}
+
+button > * {
+  position: relative;
+}
+
+button span {
+  display: block;
+  padding: 12px 24px;
+  pointer-events: none;
+}
+
+button:before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, .3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+button:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width .2s ease-out, padding-top .2s ease-out;
 }
