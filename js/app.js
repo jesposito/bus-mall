@@ -83,12 +83,14 @@ function resetPrompt() {
   resetQuestion.textContent = 'Thanks for your help! Do you want to start over?';
   var yesButton = document.createElement('button');
   yesButton.setAttribute('type', 'click');
-  yesButton.setAttribute('name','yesB');
+  yesButton.setAttribute('name','Yes');
   yesButton.setAttribute('value','Yes');
+  yesButton.innerHTML = '<span>Yes</span>';
   var noButton = document.createElement('button');
   noButton.setAttribute('type', 'click');
-  noButton.setAttribute('name','noB');
+  noButton.setAttribute('name','No');
   noButton.setAttribute('value','No');
+  noButton.innerHTML = '<span>No</span>';
   yesButton.id = 'yes-button';
   noButton.id = 'no-button';
   buttonContainer.appendChild(resetQuestion);
@@ -99,7 +101,8 @@ function resetPrompt() {
 
 function handleSubmit(event){
   event.preventDefault();
-  console.log(event.target.value);
+  var val = event.target.value;
+  console.log(val);
   if (event.target.value === 'Yes') {
     clearClassChildren('reset-check');
     makeSets();
