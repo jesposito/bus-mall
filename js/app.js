@@ -45,10 +45,10 @@ var pen = new Image('pen','Pen','img/pen.jpg');
 var petSweep = new Image('petsweep','Pet Sweep','img/pet-sweep.jpg');
 var scissors = new Image('scissors','Scissors','img/scissors.jpg');
 var shark = new Image('shark','Shark','img/shark.jpg');
-var sweep = new Image('sweep','Sweep','img/sweep.png');
+var sweep = new Image('sweep','Sweep','img/sweep.jpg');
 var tauntaun = new Image('tauntaun','Taun Taun','img/tauntaun.jpg');
 var unicorn = new Image('unicorn','Unicorn','img/unicorn.jpg');
-var usb = new Image('usb','USB','img/usb.gif');
+var usb = new Image('usb','USB','img/usb.jpg');
 var waterCan = new Image('watercan','Water Can','img/water-can.jpg');
 var wineGlass = new Image('wineglass','Wine Glass','img/wine-glass.jpg');
 

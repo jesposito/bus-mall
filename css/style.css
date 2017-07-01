@@ -126,13 +126,14 @@ h2 {
   justify-content: space-between;
   align-items: center;
   justify-content: center;
+  margin-top: 6rem;
 }
 
 .photo-grid-item {
   margin-left: 2.5rem;
   margin-right: 2.5rem;
-  margin-bottom: 50px;
-  height: 12.5rem;
+  margin-bottom: 2rem;
+  height: 16rem;
   align-content: space-between;
   justify-content: center;
   align-self: center;
