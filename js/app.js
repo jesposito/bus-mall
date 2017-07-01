@@ -80,7 +80,7 @@ function resetPrompt() {
   var buttonContainer = document.getElementById('reset-form');
   var resetQuestion = document.createElement('h2');
   resetQuestion.id = 'reset-h2';
-  resetQuestion.textContent = 'Thanks for your help! Do you want to start over?';
+  resetQuestion.textContent = 'Thanks for your help! Do you want to reset the results?';
   var yesButton = document.createElement('button');
   yesButton.setAttribute('type', 'click');
   yesButton.setAttribute('name','Yes');
@@ -112,8 +112,8 @@ function handleSubmit(event){
     var imagesTemp = localStorage.stringImages;
     images = JSON.parse(imagesTemp);
     console.log('from local storage ' + images);
-    drawTable();
-    drawChart();
+    makeSets();
+    displaySet();
   }
 }
 
